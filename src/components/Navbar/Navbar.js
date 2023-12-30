@@ -7,7 +7,7 @@ import {
   CircularProgress,
   Box,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import memories2 from "../../images/memories-Logo.png";
@@ -23,9 +23,10 @@ function Navbar() {
   const { data, loading, error } = useSelector(({ user }) => user);
   const [errorMessage, setErrorMessage] = useState(error);
 
-  const logOut = () => {
+  const logOut = useCallback(() => {
+    // Your logOut logic
     dispatch(logOutUser());
-  };
+  }, [dispatch]);
 
   const user = data;
 
@@ -36,7 +37,7 @@ function Navbar() {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) logOut();
     } else console.log("Nothing happened");
-  }, [data, user, dispatch]);
+  }, [data, user, logOut]);
 
   useEffect(() => {
     if (error) setErrorMessage("Invalid Credentials");
