@@ -22,6 +22,7 @@ function Navbar() {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector(({ user }) => user);
   const [errorMessage, setErrorMessage] = useState(error);
+
   const logOut = () => {
     dispatch(logOutUser());
   };
@@ -44,7 +45,7 @@ function Navbar() {
   useEffect(() => {
     const temp = JSON.parse(localStorage.getItem("profile"));
     if (data === null && temp != null) dispatch(setUser(temp));
-  }, [data]);
+  }, [data, dispatch]);
 
   if (loading) return <CircularProgress />;
 
@@ -76,7 +77,14 @@ function Navbar() {
             </Link>
           </Grid>
           <Grid item style={{ marginRight: "auto" }}>
-            <img src={memories1} alt="memories" height="50" className="image" />
+            <Link to="/">
+              <img
+                src={memories1}
+                alt="memories"
+                height="50"
+                className="image"
+              />
+            </Link>
           </Grid>
           <Grid item>
             {user ? (

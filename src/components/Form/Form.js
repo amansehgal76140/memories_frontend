@@ -26,8 +26,10 @@ function Form({ currentPostId, setCurrentPostId }) {
   const user = userData;
 
   useEffect(() => {
-    if (data && currentPostId != null) {
-      setPostData(data.find((post) => post._id === currentPostId && post));
+    if (data && currentPostId != null && currentPostId !== postData._id) {
+      const temp = data.find((post) => post._id === currentPostId);
+      setPostData(temp);
+      console.log(temp);
     }
   }, [currentPostId, setPostData, data]);
 
