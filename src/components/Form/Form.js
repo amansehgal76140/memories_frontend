@@ -31,7 +31,7 @@ function Form({ currentPostId, setCurrentPostId }) {
       setPostData(temp);
       console.log(temp);
     }
-  }, [currentPostId, setPostData, data]);
+  }, [currentPostId, setPostData, data, postData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

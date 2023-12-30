@@ -29,13 +29,14 @@ function Navbar() {
 
   const user = data;
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const token = user?.token;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) logOut();
     } else console.log("Nothing happened");
-  }, [data]);
+  }, [data, user, dispatch]);
 
   useEffect(() => {
     if (error) setErrorMessage("Invalid Credentials");
