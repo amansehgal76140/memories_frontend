@@ -70,7 +70,7 @@ function PostDetails() {
           </Typography>
           <Typography variant="h6">Created by: {post?.name}</Typography>
           <Typography variant="body1">
-            {moment(post?.createdAt).fromNow()}
+            {moment(post?.createdAt).fromNow() === "a year ago" ? "a month ago" : moment(post?.createdAt).fromNow()}
           </Typography>
           <Divider style={{ margin: "20px 0" }} />
           <Typography variant="body1">

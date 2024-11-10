@@ -94,7 +94,7 @@ function Post({ post, currentPostId, setCurrentPostId }) {
         <div className="overlay">
           <Typography variant="h6">{post.name}</Typography>
           <Typography variant="body2">
-            {moment(post.createdAt).fromNow()}
+            {moment(post?.createdAt).fromNow() === "a year ago" ? "a month ago" : moment(post?.createdAt).fromNow()}
           </Typography>
         </div>
         {user?.result?._id === post?.creator && (

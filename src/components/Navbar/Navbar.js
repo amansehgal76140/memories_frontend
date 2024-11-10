@@ -79,13 +79,8 @@ function Navbar() {
             </Link>
           </Grid>
           <Grid item style={{ marginRight: "auto" }}>
-            <Link to="/">
-              <img
-                src={memories1}
-                alt="memories"
-                height="50"
-                className="image"
-              />
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography variant="h3">Social Diary</Typography>
             </Link>
           </Grid>
           <Grid item>
